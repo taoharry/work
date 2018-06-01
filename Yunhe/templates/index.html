@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yunhe 蓝图</title>
+    <style type="text/css">
+        .bg {
+                filter: blur(10px);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        a {
+            color:black;
+        }
+
+    </style>
+</head>
+<body background="{{ url_for('static', filename = 'jpg/yunhe_background.jpeg') }}">
+<div  style="height: 10px;width: 1000px;border: 1px solid royalblue">
+    <form action="{{ url_for('Yunhe.time_to_str') }}" method="post">
+        <b>时间戳转化</b>
+        <input type="number"  name="select_int" required="required">
+        <input type="submit" value="Submit" />
+        <input type="text" value="{{ int_time_resault }}" >
+    </form>
+</div>
+<div>
+    <table border="2" align="center">
+        <tr>
+            <td><a href="/dict_tojson"><b>字符串转json</b></a></td>
+            <td><a href="/ossdata"><em>oss 请求</em></a></td>
+            <td><a href="/get_my_ip">获取本机ip</a></td>
+            <td><a href="/int_time_str">时间格式改变</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
