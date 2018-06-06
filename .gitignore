@@ -1,4 +1,5 @@
 *.pyc
 .git/*
 config.py
-stmp/*.log
+*.log
+

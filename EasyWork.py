@@ -3,21 +3,28 @@
 import os
 from flask import Flask
 from flask import Blueprint, render_template, abort, jsonify, request,current_app
-from flask_wtf import Form
+from flask_wtf import CSRFProtect
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from werkzeug.wsgi import DispatcherMiddleware
 
+import config
 from log import log_basic
 from Yunhe import Yunhe
 from Blog import Blog
 
-print os.getcwd()
-app = Flask(__name__)
-app.register_blueprint(Yunhe)
-app.register_blueprint(Blog)
-with app.app_context():
-	print current_app.name
 
 log_test = log_basic(name='mian')
-log_test.info.info('这')
+app = Flask(__name__)
+db = SQLAlchemy(app)
+CSRFProtect(app)
+login_manager = LoginManager(app)
+app.register_blueprint(Yunhe)
+app.register_blueprint(Blog)
+app.config.from_object(config.db_sql)
+app.config.from_object(config.basic_conf)
+
+
 
 
 

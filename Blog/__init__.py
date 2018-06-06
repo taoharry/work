@@ -3,10 +3,14 @@
 
 from flask import Blueprint
 
-Blog = Blueprint('Blog',__name__,template_folder='./templates',static_folder='./static')
+
+Blog = Blueprint('Blog',__name__,template_folder='tempaltes',static_folder='static')
 
 
-from . import views
+from . import views,model
+from EasyWork import db
+
+db.create_all()
 
 
 
