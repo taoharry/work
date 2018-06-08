@@ -1,0 +1,15 @@
+/* padding 内边距; margin 外边距*/
+*{padding:0;margin: 0}
+/*块级标签*/
+p,h1,h2,h3,h4,h5,h6{font-size: 14px;font-weight: normal;}
+a{text-decoration: none;color:#333;}
+li{list-style: none}
+.l{float: left}
+.r{float: right;}
+
+.top{height: 30%;width: 100%;margin-top: 2px;background: black;color: white;padding: 1.5em}
+
+.bottom{position: absolute;height: 5%;width: 100%;bottom: 2px;background: blue;color: white;padding: 1.5em}
+
+.left{width: 60%;height: auto}
+.right{width: auto;height: auto}

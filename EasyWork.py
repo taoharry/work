@@ -19,7 +19,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 CSRFProtect(app)
 login_manager = LoginManager(app)
-app.register_blueprint(Yunhe)
+app.register_blueprint(Yunhe)#url_prefix='/yunhe' 给本项目设置默认地址
 app.register_blueprint(Blog)
 app.config.from_object(config.db_sql)
 app.config.from_object(config.basic_conf)

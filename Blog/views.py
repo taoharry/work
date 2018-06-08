@@ -24,7 +24,7 @@ def registers():
 		return render_template("register.html",form=form)
 	else:
 		form = RegistForm(request.form)
-		print form.csrf_token.data
+		# print form.csrf_token.data
 		if form.validate():
 			username = form.username.data
 			user = User.query.filter_by(username=username).first()
@@ -51,8 +51,9 @@ def login():
 	if request.method == "GET":
 		return render_template("login.html",form=form)
 	else:
-		username = request.form.get("username")
-		passwd = request.form.get("passwd")
+		form = RegistForm(request.form)
+		username = form.username.data
+		passwd = form.passwd.data
 		pass_url = User.query.filter_by(username=username).first()
 		if pass_url == None:
 			flash("NO USER")
@@ -76,13 +77,13 @@ def index():
 	if not all:render_template('blog_basic.html',massage = '暂无文章')
 	allpage = all_page(longer, 5)
 	page = request.args.get('page',1)
-	if not isinstance(page,[int,float]): page = 1
+	if not isinstance(page,(int,float)): page = 1
 	arg = abs(int(page))
 	if arg > allpage:arg = 1
 	page = page_list(allpage, arg)
-	# all = shut_page_content(arg, all)
 	show = all[(arg-1)*20:arg*20]
-	return render_template("index.html", show_content=show, page_number=page)
+	return render_template("blog_index.html", show_content=show, page_number=page)
+	# return render_template("blog_basic.html", show_content=show, page_number=page)
 
 @Blog.route('/blog/write')
 @login_required
@@ -91,7 +92,7 @@ def write_aritle():
 	if request.method=="GET":
 		if not user  and User.query.filter_by(username=user):
 			print "this is write save session %s"%session.get("user")
-			return render_template("write.html")
+			return render_template("blog_write.html")
 		else:
 			return redirect(url_for('Blog.login'))
 	#这里存入应该是带有html标签的内容以便存储信息

@@ -1,0 +1,26 @@
+{% extends 'blog_basic.html' %}
+{% block css_js %}{{ super() }}{% endblock %}
+{% block title %}{{ super() }}{% endblock %}
+
+{%  block left %}
+    <div class="left l" style="margin-left: 5px;border: 2px black;width: 30%;height: auto">
+            <input type=”date”/>
+    </div>
+{% endblock %}
+
+
+{% block right %}
+    <div class="right l" style="margin-right: 2px;width: auto;height: auto;">
+        {% for i in aritic %}
+            <div>
+                <h3>{{ i.title }}</h3>
+                <p>{{ i.content}}</p>
+            </div>
+        {% endfor %}
+        <div>
+            {% for p in pagge %}
+                <a href="{{ url_for() }}">{{ p }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

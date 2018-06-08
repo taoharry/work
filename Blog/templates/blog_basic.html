@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css_js %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('Blog.static',filename='main.css') }}" >
+    {% endblock %}
+    <title>{% block title %}Blog{% endblock %}</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p align="center" style="color: red">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<div class="top">
+    <img src="" class="logo" onerror="" alt="logo" style="margin-left: 6%;border: 2px darkgrey">
+    <a href="{{ url_for('Blog.write_aritle') }}" style="color: white;margin-left: 6%">
+        <em>写博客</em>
+    </a>
+    {% block top_left  %}
+        <a href="{{ url_for('Blog.login') }}" style="color: white;margin-left: 40%">
+                <em>登入</em>
+        </a>
+    {% endblock %}
+    {% block top_right %}
+        <a href="{{ url_for('Blog.registers') }}" style="color: white;margin-left: 6%">
+                <em>注册</em>
+        </a>
+    {% endblock %}
+</div>
+{%  block left %}
+    <div class="left l">
+            <img src="" class="logo" onerror="" alt="logo" >
+    </div>
+{% endblock %}
+
+
+{% block right %}
+    <div class="right l">
+
+    </div>
+{% endblock %}
+
+<div class="bottom">
+
+</div>
+
+</body>
+</html>
