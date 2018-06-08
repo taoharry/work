@@ -16,24 +16,24 @@
   {% endif %}
 {% endwith %}
 <div class="top">
-    <img src="" class="logo" onerror="" alt="logo" style="margin-left: 6%;border: 2px darkgrey">
-    <a href="{{ url_for('Blog.write_aritle') }}" style="color: white;margin-left: 6%">
+    <img src="{{ url_for("Blog.static",filename="png/logo.jpg") }}" class="logo">
+    <a href="{{ url_for('Blog.write_aritle') }}" style="color: white;margin-left: 6%;font-size: xx-large">
         <em>写博客</em>
     </a>
     {% block top_left  %}
-        <a href="{{ url_for('Blog.login') }}" style="color: white;margin-left: 40%">
+        <a href="{{ url_for('Blog.login') }}" style="color: white;margin-left: 50%;font-size: xx-large">
                 <em>登入</em>
         </a>
     {% endblock %}
     {% block top_right %}
-        <a href="{{ url_for('Blog.registers') }}" style="color: white;margin-left: 6%">
+        <a href="{{ url_for('Blog.registers') }}" style="color: white;margin-left: 6%;font-size: xx-large">
                 <em>注册</em>
         </a>
     {% endblock %}
 </div>
 {%  block left %}
     <div class="left l">
-            <img src="" class="logo" onerror="" alt="logo" >
+            <img src="{{ url_for("Blog.static",filename="png/left.png") }}"  >
     </div>
 {% endblock %}
 

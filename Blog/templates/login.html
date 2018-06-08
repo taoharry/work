@@ -1,12 +1,15 @@
 {% extends 'blog_basic.html' %}
+{% block css_js %}{{ super() }}{% endblock %}
 {% block title %}Login{% endblock %}
 
-
-{% block boday %}
-<form action="{{ url_for('Blog.login') }}" method="post">
-    {{ form.csrf_token }}
-    {{ form.username.label }} {{ form.username(size=20) }}
-    {{ form.passwd.label }}{{ form.passwd(size=20) }}
-    <input type="submit" value="submit">
-</form>
+{%  block left %}{{ super() }}{% endblock %}
+{% block right %}
+    <div class="right l">
+        <form action="{{ url_for('Blog.login') }}" method="post">
+            {{ form.csrf_token }}
+            {{ form.username.label }} {{ form.username(size=20) }}
+            {{ form.passwd.label }}{{ form.passwd(size=20) }}
+            <input type="submit" value="submit">
+        </form>
+    </div>
 {% endblock %}
