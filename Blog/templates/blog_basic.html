@@ -31,19 +31,20 @@
         </a>
     {% endblock %}
 </div>
-{%  block left %}
-    <div class="left l">
-            <img src="{{ url_for("Blog.static",filename="png/left.png") }}"  >
-    </div>
-{% endblock %}
+<div class="boday">
+    {%  block left %}
+        <div class="left l">
+                <img src="{{ url_for("Blog.static",filename="png/left.png") }}"  >
+        </div>
+    {% endblock %}
 
 
-{% block right %}
-    <div class="right l">
+    {% block right %}
+        <div class="right l">
 
-    </div>
-{% endblock %}
-
+        </div>
+    {% endblock %}
+</div>
 <div class="bottom">
 
 </div>
